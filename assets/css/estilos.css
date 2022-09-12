@@ -78,3 +78,166 @@ nav ul li a {
     font-size: 14px;
     color: #6b6b6b;
 }
+
+section {
+    margin-top: 70px;
+    margin-bottom: 120px;
+}
+
+section .titulo .rayito, section .titulo div {
+    display: inline-block;
+}
+
+section .titulo {
+    margin: 30px 0px 0px 350px;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+section .titulo .rayito {
+    background: #196a15;
+}
+
+section .titulo .rayito p {
+    padding: 8px 15px;
+    margin: 0px;
+}
+
+section .titulo div h3 {
+    padding: 0px;
+    margin: 0px;
+    margin-left: 20px;
+    text-transform: uppercase;
+}
+
+section .mangas {
+    margin-left: 350px;
+    margin-top: 30px;
+}
+
+section .mangas article .caratula, section .mangas article .descripcion {
+    display: inline-block;
+}
+
+section .mangas article .caratula img {
+    width: 150px;
+}
+
+section .mangas article .descripcion {
+    vertical-align: top;
+    margin-left: 30px;
+}
+
+section .mangas article .descripcion .titulo {
+    margin-top: 0px;
+    margin-left: 0px;
+    border-bottom: 0px;
+}
+
+section .mangas article .descripcion .titulo h5 {
+    margin: 0px;
+    padding: 0px;
+    color: black;
+    font-size: 16px;
+}
+
+section .mangas article .descripcion .calificacion p {
+    margin-bottom: 0px;
+}
+
+section .mangas article .descripcion .capitulos .chapter, section .mangas article .descripcion .capitulos .fecha {
+    display: inline-block;
+}
+
+section .mangas article .descripcion .capitulos .chapter ul, section .mangas article .descripcion .capitulos .fecha ul {
+    padding: 0px;
+}
+
+section .mangas article .descripcion .capitulos .chapter ul li, section .mangas article .descripcion .capitulos .fecha ul li {
+    list-style: none;
+}
+
+section .mangas article .descripcion .capitulos .chapter ul li {
+    background: #ebebeb;
+    padding: 5px 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+}
+
+section .mangas article .descripcion .capitulos .chapter ul li a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #6c6c6c;
+}
+
+section .mangas article .descripcion .capitulos .fecha {
+    vertical-align: top;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+section .mangas article .descripcion .capitulos .fecha ul li {
+    margin-bottom: 25px;
+}
+
+section .mangas article .descripcion .capitulos .fecha ul li a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #a3a3a3;
+}
+
+section .mangas article .descripcion .capitulos .fecha ul li:first-child a {
+    background: #ba231f;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Poppins Semi';
+    font-size: 12px;
+    padding: 2px 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 0px;
+    -webkit-box-shadow: 0px -2px 5px 0px #d1d1d1;
+    -moz-box-shadow: 0px -2px 5px 0px #d1d1d1;
+    box-shadow: 0px -2px 5px 0px #d1d1d1;
+}
+
+footer .lista {
+    margin-bottom: 30px;
+}
+
+footer .lista ul li {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+footer .lista ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #6b6b6b;
+}
+
+footer .lista ul li a::after {
+    content: '|';
+    margin-left: 30px;
+}
+
+
+footer .lista ul li:last-child a::after {
+    content: '';
+}
+
+footer .lista ul li:nth-child(2) a {
+    text-transform: capitalize;
+}
+
+footer .copy {
+    width: 60%;
+    margin: 0 auto;
+}
+
+footer .copy p {
+    font-size: 14px;
+    color: #a3a3a3;
+}
