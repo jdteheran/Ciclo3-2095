@@ -8,6 +8,19 @@
     src: url(../fonts/Poppins/Poppins-SemiBold.ttf);
 }
 
+@font-face {
+    font-family: 'iconitos';
+    src:  url('../fonts/Iconos/icomoon.eot?18mt2k');
+    src:  url('../fonts/Iconos/icomoon.eot?18mt2k#iefix') format('embedded-opentype'),
+      url('../fonts/Iconos/icomoon.ttf?18mt2k') format('truetype'),
+      url('../fonts/Iconos/icomoon.woff?18mt2k') format('woff'),
+      url('../fonts/Iconos/icomoon.svg?18mt2k#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+
+
 * {
     font-family: 'Poppins';
 }
@@ -45,6 +58,16 @@ header .lista ul li a {
     font-size: 14px;
 }
 
+header .lista ul li a .casita::before {
+    font-family: 'iconitos';
+    content: '\e902';
+}
+
+header .lista ul li a .carpeta::before {
+    font-family: 'iconitos';
+    content: '\e930';
+}
+
 header .lista ul li:first-child a {
     text-transform: uppercase;
 }
@@ -56,9 +79,15 @@ header .buscador {
 
 header .buscador a {
     background: white;
-    padding: 3px 10px;
+    padding: 5px 10px;
     border-radius: 50%;
     text-decoration: none;
+}
+
+header .buscador a .lupa::before {
+    font-family: 'iconitos';
+    content: '\e986';
+    color: #196a15;
 }
 
 nav ul {
@@ -79,13 +108,38 @@ nav ul li a {
     color: #6b6b6b;
 }
 
+nav ul li a .discord::before {
+    font-family: 'iconitos';
+    content: '\e901';
+    margin-right: 3px;
+}
+
+nav ul li a .engranaje::before {
+    font-family: 'iconitos';
+    content: '\e900';
+    margin-right: 3px;
+}
+
+nav ul li a .play::after {
+    font-family: 'iconitos';
+    content: '\ea1c';
+}
+
 section {
     margin-top: 70px;
-    margin-bottom: 120px;
+    margin-bottom: 80px;
 }
 
 section .titulo .rayito, section .titulo div {
     display: inline-block;
+}
+
+section .titulo .rayito p .rayito::before {
+    font-family: 'iconitos';
+    content: '\e9b5';
+    color: white;
+    font-weight: lighter;
+    font-size: 12px;
 }
 
 section .titulo {
@@ -118,6 +172,12 @@ section .mangas article .caratula, section .mangas article .descripcion {
     display: inline-block;
 }
 
+section .mangas article {
+    display: inline-block;
+    width: 35%;
+    margin-bottom: 70px;
+}
+
 section .mangas article .caratula img {
     width: 150px;
 }
@@ -144,6 +204,23 @@ section .mangas article .descripcion .calificacion p {
     margin-bottom: 0px;
 }
 
+section .mangas article .descripcion .calificacion p .estrellita::before {
+    font-family: 'iconitos';
+    content: '\e9d9';
+    color: #196a15;
+}
+
+.estrellita-media::before {
+    font-family: 'iconitos';
+    content: '\e9d8';
+    color: #196a15;
+}
+
+.estrellita-vacia::before {
+    font-family: 'iconitos';
+    content: '\e9d7';
+    color: #196a15;
+}
 section .mangas article .descripcion .capitulos .chapter, section .mangas article .descripcion .capitulos .fecha {
     display: inline-block;
 }
@@ -240,4 +317,9 @@ footer .copy {
 footer .copy p {
     font-size: 14px;
     color: #a3a3a3;
+}
+
+footer .copy p .copy::before {
+    font-family: 'iconitos';
+    content: '\e903';
 }
