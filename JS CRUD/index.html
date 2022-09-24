@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Estudiantes</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="btn btn-primary" id="agregar">+</button>
+
+        <div class="registro">
+            <h2>Formulario de registro de estudiantes</h2>
+            <form action="#" method="post">
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+                <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
+                <input type="number" class="form-control" name="celular" id="celular" placeholder="Celular">
+                <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo">
+                <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña">
+                <input type="submit" class="btn btn-success" value="Crear estudiante">
+            </form>
+        </div>
+
+        <div class="lista">
+            <h2>Lista de estudiantes</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre - Apellido</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">f674c218-9b22-4f1e-af2a-12933070f683</th>
+                        <td>Pedro Perez</td>
+                        <td>pperez@uninorte.edu.co</td>
+                        <td>
+                            <button class="btn btn-success">Ver</button>
+                            <button class="btn btn-warning">Editar</button>
+                            <button class="btn btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</body>
+<script src="assets/js/script.js"></script>
+
+</html>
