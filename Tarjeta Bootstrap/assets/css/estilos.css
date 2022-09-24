@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'iconitos';
+    src: url('../fonts/Iconos/icomoon.eot?4nsn2');
+    src: url('../fonts/Iconos/icomoon.eot?4nsn2#iefix') format('embedded-opentype'),
+        url('../fonts/Iconos/icomoon.ttf?4nsn2') format('truetype'),
+        url('../fonts/Iconos/icomoon.woff?4nsn2') format('woff'),
+        url('../fonts/Iconos/icomoon.svg?4nsn2#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+section {
+    border: 1px solid #333;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: 50px;
+    -webkit-box-shadow: 2px 2px 13px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 2px 13px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 2px 2px 13px -2px rgba(0, 0, 0, 0.75);
+}
+
+section .poster {
+    border-bottom: 2px solid blue;
+}
+
+section .poster .imagen {
+    padding: 0px;
+}
+
+section .poster .imagen img {
+    width: 150px;
+}
+
+section .poster .contenido .titulo {
+    margin-top: 10px;
+}
+
+section .poster .contenido .titulo h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+section .poster .contenido .titulo p a {
+    color: red;
+}
+
+section .poster .contenido .tag-tiempo {
+    margin-top: 40px;
+}
+
+section .poster .contenido .tag-tiempo .tag p {
+    background: blue;
+    color: white;
+    border-radius: 16px;
+    padding: 5px 10px 5px 10px;
+    display: inline-block;
+}
+
+section .poster .contenido .tag-tiempo .tiempo {
+    text-align: right;
+}
+
+section .poster .contenido .tag-tiempo .tiempo p span {
+    font-weight: bold;
+}
+
+section .calificacion .escala p, section .calificacion .puntaje p {
+    padding-top: 15px;
+}
+
+section .calificacion .puntaje p {
+    text-align: right;
+}
+
+section .calificacion .escala .incremento {
+    transform: rotate(270deg);
+    display: inline-block;
+    margin-right: 10px;
+    color: green;
+}
+
+section .calificacion .escala .decremento {
+    transform: rotate(90deg);
+    display: inline-block;
+    margin-left: 10px;
+    color: red;
+}
+
+section .calificacion .escala .incremento::before {
+    font-family: 'iconitos';
+    content: '\ea1c';
+}
+
+section .calificacion .escala .decremento::after {
+    font-family: 'iconitos';
+    content: '\ea1c';
+}
+
+section .calificacion .puntaje .estrella::after {
+    font-family: 'iconitos';
+    content: '\e9d8';
+    font-size: 20px;
+}
+
+section .calificacion .puntaje .caja {
+    background: #333;
+    color: white;
+    padding: 3px 10px;
+    margin-right: 15px;
+}
+
+section .calificacion .puntaje .estrella {
+    color: rgb(206, 206, 22);
+    
+}
