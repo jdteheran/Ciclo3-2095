@@ -117,6 +117,63 @@ let estudiantes = window.localStorage.getItem('estudiantes')
 if (estudiantes != null) {
     estudiantes = JSON.parse(estudiantes)
 
+    llenar_tabla(estudiantes)
+
+    let btns_ver = document.querySelectorAll('.ver')
+
+    btns_ver.forEach(btn => {
+
+        btn.addEventListener('click', () => {
+            let id_estudiante = btn.parentElement.parentElement.firstElementChild.textContent
+
+            let estudiante = estudiantes.filter(estudiante => estudiante.id == id_estudiante)[0]
+
+            ver_registro('Atras', 'btn-primary')
+
+            let btn_crear = document.getElementById('crear')
+            let titulo = document.querySelector('h2')
+
+            btn_crear.style.display = 'none'
+            titulo.textContent = `Estudiante: ${estudiante.nombre} - ${estudiante.apellido}`
+
+            let nombre = document.getElementById('nombre')
+            let apellido = document.getElementById('apellido')
+            let celular = document.getElementById('celular')
+            let correo = document.getElementById('correo')
+            let pass = document.getElementById('contrasena')
+
+            nombre.readOnly = true;
+            apellido.readOnly = true;
+            celular.readOnly = true;
+            correo.readOnly = true;
+            pass.readOnly = true;
+
+            nombre.value = estudiante.nombre
+            apellido.value = estudiante.apellido
+            celular.value = estudiante.celular
+            correo.value = estudiante.correo
+            pass.value = estudiante.pass
+
+        })
+    });
+
+    let btns_eliminar = document.querySelectorAll('.eliminar')
+
+    btns_eliminar.forEach(btn => {
+        btn.addEventListener('click', () => {
+            let id_estudiante = btn.parentElement.parentElement.firstElementChild.textContent
+            
+            estudiantes = estudiantes.filter(estudiante => estudiante.id != id_estudiante)
+            
+            window.localStorage.setItem('estudiantes', JSON.stringify(estudiantes))
+
+
+            btn.parentElement.parentElement.remove()
+        })
+    });
+}
+
+function llenar_tabla(estudiantes) {
     estudiantes.forEach(estudiante => {
         let template_html = `<tr>
                                 <th scope="row">${estudiante.id}</th>
@@ -132,51 +189,5 @@ if (estudiantes != null) {
         let cuerpo_table = document.querySelector('tbody')
 
         cuerpo_table.innerHTML = cuerpo_table.innerHTML + template_html
-    });
-
-    let btns_ver = document.querySelectorAll('.ver')
-
-    btns_ver.forEach(btn => {
-        
-        btn.addEventListener('click', () => {
-            let id_estudiante = btn.parentElement.parentElement.firstElementChild.textContent
-            
-            let vector_estudiantes = window.localStorage.getItem('estudiantes')
-    
-            if (vector_estudiantes != null) {
-                estudiantes = JSON.parse(vector_estudiantes)
-    
-                let estudiante = estudiantes.filter(estudiante => estudiante.id == id_estudiante)[0]
-    
-                ver_registro('Atras', 'btn-primary')
-
-                let btn_crear = document.getElementById('crear')
-                let titulo = document.querySelector('h2')
-
-                btn_crear.style.display = 'none'
-                titulo.textContent = `Estudiante: ${estudiante.nombre} - ${estudiante.apellido}`
-
-                let nombre = document.getElementById('nombre')
-                let apellido = document.getElementById('apellido')
-                let celular = document.getElementById('celular')
-                let correo = document.getElementById('correo')
-                let pass = document.getElementById('contrasena')
-
-                nombre.readOnly = true;
-                apellido.readOnly = true;
-                celular.readOnly = true;
-                correo.readOnly = true;
-                pass.readOnly = true;
-
-                nombre.value = estudiante.nombre
-                apellido.value = estudiante.apellido
-                celular.value = estudiante.celular
-                correo.value = estudiante.correo
-                pass.value = estudiante.pass
-            }
-        })
-
-
-
     });
 }
