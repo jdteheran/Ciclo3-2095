@@ -6,19 +6,19 @@ let seccion_lista = document.querySelector('.lista')
 btn_agregar.addEventListener('click', () => {
 
     if (btn_agregar.textContent == '+') {
-        ver_registro()
+        ver_registro('Cancelar', 'btn-danger')
     } else {
         ver_lista()
     }
 
 })
 
-function ver_registro() {
+function ver_registro(btn_text, class_btn) {
     seccion_registro.style.display = 'block'
     seccion_lista.style.display = 'none'
 
-    btn_agregar.textContent = 'Cancelar'
-    btn_agregar.setAttribute('class', 'btn btn-danger')
+    btn_agregar.textContent = btn_text
+    btn_agregar.setAttribute('class', `btn ${class_btn}`)
 }
 
 function ver_lista() {
@@ -140,8 +140,43 @@ if (estudiantes != null) {
         
         btn.addEventListener('click', () => {
             let id_estudiante = btn.parentElement.parentElement.firstElementChild.textContent
-            console.log(btn.parentElement.parentElement.childNodes)
+            
+            let vector_estudiantes = window.localStorage.getItem('estudiantes')
+    
+            if (vector_estudiantes != null) {
+                estudiantes = JSON.parse(vector_estudiantes)
+    
+                let estudiante = estudiantes.filter(estudiante => estudiante.id == id_estudiante)[0]
+    
+                ver_registro('Atras', 'btn-primary')
+
+                let btn_crear = document.getElementById('crear')
+                let titulo = document.querySelector('h2')
+
+                btn_crear.style.display = 'none'
+                titulo.textContent = `Estudiante: ${estudiante.nombre} - ${estudiante.apellido}`
+
+                let nombre = document.getElementById('nombre')
+                let apellido = document.getElementById('apellido')
+                let celular = document.getElementById('celular')
+                let correo = document.getElementById('correo')
+                let pass = document.getElementById('contrasena')
+
+                nombre.readOnly = true;
+                apellido.readOnly = true;
+                celular.readOnly = true;
+                correo.readOnly = true;
+                pass.readOnly = true;
+
+                nombre.value = estudiante.nombre
+                apellido.value = estudiante.apellido
+                celular.value = estudiante.celular
+                correo.value = estudiante.correo
+                pass.value = estudiante.pass
+            }
         })
+
+
 
     });
 }
