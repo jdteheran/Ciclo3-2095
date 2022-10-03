@@ -39,7 +39,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    {% for estudiante in estudiantes %}
+                    <tr>
+                        <td scope="col">{{estudiante[0]}}</td>
+                        <td scope="col">{{estudiante[1]}} - {{estudiante[2]}}</td>
+                        <td scope="col">{{estudiante[3]}}</td>
+                        <td scope="col">
+                            <button class="btn btn-success" >Ver</button>
+                            <button class="btn btn-warning">Editar</button>
+                            <button class="btn btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

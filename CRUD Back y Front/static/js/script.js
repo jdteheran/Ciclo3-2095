@@ -40,10 +40,30 @@ btn_crear.addEventListener('click', (event) => {
     let correo = document.getElementById('correo')
     let pass = document.getElementById('contrasena')
 
-    let id = uuidv4()
 
     if (validacion()) {
-        let template_registro = `<tr>
+
+        const estudiante = {
+            nombre: nombre.value,
+            apellido: apellido.value,
+            celular: celular.value,
+            correo: correo.value,
+            contrasena: pass.value
+        }
+
+        fetch('/home', {
+            method: 'POST',
+            body: JSON.stringify(estudiante),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.text())
+            .then(response => ver_lista())
+            .catch(error => console.error('Error:', error))
+
+            
+
+        /* let template_registro = `<tr>
                                     <th scope="row">${id}</th>
                                     <td>${nombre.value} - ${apellido.value}</td>
                                     <td>${correo.value}</td>
@@ -58,22 +78,13 @@ btn_crear.addEventListener('click', (event) => {
 
         cuerpo_table.innerHTML = cuerpo_table.innerHTML + template_registro
 
-        let estudiante = {
-            id,
-            nombre: nombre.value,
-            apellido: apellido.value,
-            celular: celular.value,
-            correo: correo.value,
-            pass: pass.value,
-        }
-
         ver_lista()
 
         nombre.value = ''
         apellido.value = ''
         celular.value = ''
         correo.value = ''
-        pass.value = ''
+        pass.value = '' */
     }
 })
 

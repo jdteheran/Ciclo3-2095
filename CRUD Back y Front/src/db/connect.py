@@ -1,7 +1,26 @@
 import sqlite3
 
-conn = sqlite3.connect('db/estudiantes.sqlite')
-print ("Opened database successfully")
 
-print('holaaa')
-conn.close()
+def obtener_todos_estudiantes():
+    conn = sqlite3.connect('db/estudiantes.sqlite')
+
+    crsr = conn.cursor()
+    crsr.execute('SELECT * FROM estudiantes')
+    result = crsr.fetchall()
+
+    conn.close()
+
+    return result
+
+def registrar_estudiante(estudiante):
+    conn = sqlite3.connect('db/estudiantes.sqlite')
+
+    crsr = conn.cursor()
+    crsr.execute('INSERT INTO estudiantes (nombre, apellido, celular, correo, contrasena) VALUES("{}","{}","{}","{}","{}")'
+                    .format(estudiante['nombre'], estudiante['apellido'], estudiante['celular'], estudiante['correo'], estudiante['contrasena']))
+    
+    conn.commit()
+    
+    conn.close()
+
+
