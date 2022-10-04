@@ -19,3 +19,8 @@ def home():
         #validaciones
         registrar_estudiante(estudiante)
         return 'registro exitoso'
+
+@app.route('/get_all_students', methods=['GET'])
+def get_all_students():
+    estudiantes = obtener_todos_estudiantes()
+    return estudiantes

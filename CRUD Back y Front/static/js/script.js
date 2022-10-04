@@ -58,15 +58,32 @@ btn_crear.addEventListener('click', (event) => {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.text())
-            .then(response => ver_lista())
+            .then(response => {
+                consultar_todos_estudiantes()
+            })
             .catch(error => console.error('Error:', error))
 
-            
+    }
+})
 
-        /* let template_registro = `<tr>
-                                    <th scope="row">${id}</th>
-                                    <td>${nombre.value} - ${apellido.value}</td>
-                                    <td>${correo.value}</td>
+function consultar_todos_estudiantes() {
+    fetch('/get_all_students')
+        .then(res => res.json())
+        .then(response => {
+            llenar_tabla(response)
+            ver_lista()
+        })
+        .catch(error => console.log('Error:', error))
+}
+
+function llenar_tabla(estudiantes) {
+    let cuerpo_table = document.querySelector('tbody')
+    cuerpo_table.innerHTML = ''
+    estudiantes.forEach(estudiante => {
+        let template_registro = `<tr>
+                                    <th scope="row">${estudiante[0]}</th>
+                                    <td>${estudiante[1]} - ${estudiante[2]}</td>
+                                    <td>${estudiante[3]}</td>
                                     <td>
                                         <button class="btn btn-success ver">Ver</button>
                                         <button class="btn btn-warning editar">Editar</button>
@@ -74,19 +91,9 @@ btn_crear.addEventListener('click', (event) => {
                                     </td>
                                 </tr>`
 
-        let cuerpo_table = document.querySelector('tbody')
-
         cuerpo_table.innerHTML = cuerpo_table.innerHTML + template_registro
-
-        ver_lista()
-
-        nombre.value = ''
-        apellido.value = ''
-        celular.value = ''
-        correo.value = ''
-        pass.value = '' */
-    }
-})
+    });
+}
 
 function validacion() {
 
