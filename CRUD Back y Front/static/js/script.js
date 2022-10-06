@@ -87,7 +87,7 @@ function llenar_tabla(estudiantes) {
                                     <td>
                                         <button class="btn btn-success ver">Ver</button>
                                         <button class="btn btn-warning editar">Editar</button>
-                                        <button class="btn btn-danger eliminar">Eliminar</button>
+                                        <button class="btn btn-danger eliminar" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar</button>
                                     </td>
                                 </tr>`
 
@@ -113,3 +113,43 @@ function validacion() {
 
     return true
 }
+
+const btns_eliminar = document.querySelectorAll('.eliminar')
+
+btns_eliminar.forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        const fila_estudiante = btn.parentElement.parentElement
+
+        const estudiante = {
+            id: fila_estudiante.firstElementChild.textContent,
+            "nombre-apellido": fila_estudiante.children[1].textContent,
+            correo: fila_estudiante.children[2].textContent
+        }
+
+        document.getElementById('modal_titulo').textContent = 'Eliminar'
+        document.getElementById('modal_body').textContent = `Esta seguro que quiere eliminar al estudiante id:${estudiante.id} nombre-apellido:${estudiante["nombre-apellido"]}`
+        document.getElementById('btn_cancelar').textContent = 'Cancelar'
+        const modal_aceptar = document.getElementById('btn_aceptar')
+
+        modal_aceptar.textContent = 'Eliminar'
+
+        modal_aceptar.addEventListener('click', () => {
+            fetch('/eliminar_by_id', {
+                method: 'DELETE',
+                body: JSON.stringify(estudiante),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.text())
+                .then(response => {
+                    btn.parentElement.parentElement.remove()
+
+                    let myModalEl = document.getElementById('exampleModal');
+                    let modal = bootstrap.Modal.getInstance(myModalEl)
+                    modal.hide();
+                })
+                .catch(error => console.error('Error:', error))
+        })
+    })
+});

@@ -23,4 +23,12 @@ def registrar_estudiante(estudiante):
     
     conn.close()
 
+def eliminar_estudiante_by_id(id):
+    conn = sqlite3.connect('db/estudiantes.sqlite')
 
+    crsr = conn.cursor()
+    crsr.execute('DELETE FROM estudiantes WHERE id={}'.format(id))
+    
+    conn.commit()
+    
+    conn.close()

@@ -45,9 +45,9 @@
                         <td scope="col">{{estudiante[1]}} - {{estudiante[2]}}</td>
                         <td scope="col">{{estudiante[3]}}</td>
                         <td scope="col">
-                            <button class="btn btn-success" >Ver</button>
-                            <button class="btn btn-warning">Editar</button>
-                            <button class="btn btn-danger">Eliminar</button>
+                            <button class="btn btn-success ver">Ver</button>
+                            <button class="btn btn-warning editar">Editar</button>
+                            <button class="btn btn-danger eliminar" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar</button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -56,8 +56,26 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modal_title" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_titulo"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal_body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn_cancelar"></button>
+                    <button type="button" class="btn btn-primary" id="btn_aceptar"></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
+<script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
 <script src="{{url_for('static', filename='js/script.js')}}"></script>
 
 </html>
