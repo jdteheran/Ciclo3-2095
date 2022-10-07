@@ -1,6 +1,5 @@
 import sqlite3
 
-
 def obtener_todos_estudiantes():
     conn = sqlite3.connect('db/estudiantes.sqlite')
 
@@ -32,3 +31,14 @@ def eliminar_estudiante_by_id(id):
     conn.commit()
     
     conn.close()
+
+def obtener_estudiante_by_correo(correo):
+    conn = sqlite3.connect('db/estudiantes.sqlite')
+
+    crsr = conn.cursor()
+    crsr.execute('SELECT * FROM estudiantes where correo="{}"'.format(correo))
+    result = crsr.fetchone()
+
+    conn.close()
+
+    return result

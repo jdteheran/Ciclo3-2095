@@ -1,14 +1,34 @@
 
-from flask import Flask, render_template, request
-from src.db.connect import obtener_todos_estudiantes, registrar_estudiante, eliminar_estudiante_by_id
+from flask import Flask, render_template, request, redirect, url_for
+from src.db.connect import obtener_todos_estudiantes, registrar_estudiante, eliminar_estudiante_by_id, obtener_estudiante_by_correo
 from src.email.correo import enviar_correo
+from app.login.forms import FormInicio
 import json
+
 app = Flask(__name__)
 
-@app.route('/')
+app.config['SECRET_KEY'] = 'clave secreta'
+
+@app.route('/', methods=['GET', 'POST'])
 def login():
-    enviar_correo('correo', 'correo desde app', 'este es mi mensaje de correo')
-    return 'Login'
+    form = FormInicio()
+
+    if not(form.validate_on_submit()):
+        return render_template('login/index.html', form=form)
+    
+    usuario = form.usuario.data
+    estudiante_bd = obtener_estudiante_by_correo(usuario)
+
+    if not(estudiante_bd):
+        return render_template('login/index.html', form=form)
+    
+    contrasena = form.contrasena.data
+
+    if not(contrasena == estudiante_bd[5]):
+        return render_template('login/index.html', form=form)
+
+    return redirect(url_for('home'))
+
 
 
 @app.route('/home', methods=['GET', 'POST'])

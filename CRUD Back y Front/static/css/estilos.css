@@ -1,3 +1,19 @@
 .registro {
     display: none;
 }
+
+.contenedor {
+    min-height: 100vh;
+    text-align: center;
+}
+
+.contenedor div {
+    display: inline-block;
+    text-align: left;
+    min-height: 40vh;
+    margin-top: calc(50vh - 20vh);
+}
+
+.contenedor div h1 {
+    text-align: center;
+}

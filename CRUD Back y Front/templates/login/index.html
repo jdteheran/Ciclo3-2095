@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/estilos.css')}}">
+</head>
+
+<body>
+    <div class="contenedor">
+        <div>
+            <h1>Iniciar Sesión</h1>
+            <form action="" method="POST" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.usuario.label }}<br>
+                    {{ form.usuario(size=30)}}<br>
+                </p>
+                <p>
+                    {{ form.contrasena.label }}<br>
+                    {{ form.contrasena(size=30) }}<br>
+                </p>
+                <a href="#">Recordar contraseña</a>
+                <p>{{ form.enviar() }}</p>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
