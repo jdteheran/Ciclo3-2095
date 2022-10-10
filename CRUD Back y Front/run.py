@@ -1,13 +1,24 @@
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from src.db.connect import obtener_todos_estudiantes, registrar_estudiante, eliminar_estudiante_by_id, obtener_estudiante_by_correo
 from src.email.correo import enviar_correo
 from app.login.forms import FormInicio
+from werkzeug.security import generate_password_hash, check_password_hash
 import json
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'clave secreta'
+
+@app.before_request
+def antes():
+    if 'logeado' not in session and request.endpoint in ['home']:
+        return redirect(url_for('login'))
+
+    if 'logeado' in session and request.endpoint in ['login']:
+        return redirect(url_for('home'))
+
+#@app.after_request
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -24,8 +35,10 @@ def login():
     
     contrasena = form.contrasena.data
 
-    if not(contrasena == estudiante_bd[5]):
+    if not(check_password_hash(estudiante_bd[5], contrasena)):
         return render_template('login/index.html', form=form)
+
+    session['logeado'] = True
 
     return redirect(url_for('home'))
 
@@ -39,6 +52,8 @@ def home():
     elif request.method == 'POST':
         estudiante = json.loads(request.data.decode('utf_8'))
         #validaciones
+
+        estudiante['contrasena'] = generate_password_hash(estudiante['contrasena'])
         registrar_estudiante(estudiante)
         return 'registro exitoso'
 
