@@ -153,3 +153,13 @@ btns_eliminar.forEach(btn => {
         })
     })
 });
+
+const btn_cerrar_sesion = document.querySelector('.cerrar_sesion')
+
+btn_cerrar_sesion.addEventListener('click', () => {
+    fetch('/cerrar_sesion', {
+        method: 'POST'
+    }).then(res => res.text())
+        .then(response => window.location.href = "/")
+        .catch(error => console.error('Error:', error))
+})

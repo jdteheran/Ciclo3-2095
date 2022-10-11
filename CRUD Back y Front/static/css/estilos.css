@@ -17,3 +17,7 @@
 .contenedor div h1 {
     text-align: center;
 }
+
+.cerrar_sesion {
+    float: right;
+}

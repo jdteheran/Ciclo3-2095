@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session,jsonify
 from src.db.connect import obtener_todos_estudiantes, registrar_estudiante, eliminar_estudiante_by_id, obtener_estudiante_by_correo
 from src.email.correo import enviar_correo
 from app.login.forms import FormInicio
@@ -60,10 +60,15 @@ def home():
 @app.route('/get_all_students', methods=['GET'])
 def get_all_students():
     estudiantes = obtener_todos_estudiantes()
-    return estudiantes
+    return jsonify(estudiantes)
 
 @app.route('/eliminar_by_id', methods=['DELETE'])
 def eliminar_by_id():
     estudiante_id = int(json.loads(request.data.decode('utf_8'))['id'])
     eliminar_estudiante_by_id(estudiante_id)
     return 'holaa'
+
+@app.route('/cerrar_sesion', methods=['POST'])
+def cerrar_sesion():
+    session.clear()
+    return 'Sesion cerrada'

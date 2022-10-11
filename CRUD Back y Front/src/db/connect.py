@@ -1,7 +1,10 @@
 import sqlite3
+import os
+
+url = os.path.abspath(os.getcwd()) + '/db/estudiantes.sqlite'
 
 def obtener_todos_estudiantes():
-    conn = sqlite3.connect('db/estudiantes.sqlite')
+    conn = sqlite3.connect(url)
 
     crsr = conn.cursor()
     crsr.execute('SELECT * FROM estudiantes')
@@ -12,7 +15,7 @@ def obtener_todos_estudiantes():
     return result
 
 def registrar_estudiante(estudiante):
-    conn = sqlite3.connect('db/estudiantes.sqlite')
+    conn = sqlite3.connect(url)
 
     crsr = conn.cursor()
     crsr.execute('INSERT INTO estudiantes (nombre, apellido, celular, correo, contrasena) VALUES("{}","{}","{}","{}","{}")'
@@ -23,7 +26,7 @@ def registrar_estudiante(estudiante):
     conn.close()
 
 def eliminar_estudiante_by_id(id):
-    conn = sqlite3.connect('db/estudiantes.sqlite')
+    conn = sqlite3.connect(url)
 
     crsr = conn.cursor()
     crsr.execute('DELETE FROM estudiantes WHERE id={}'.format(id))
@@ -33,7 +36,7 @@ def eliminar_estudiante_by_id(id):
     conn.close()
 
 def obtener_estudiante_by_correo(correo):
-    conn = sqlite3.connect('db/estudiantes.sqlite')
+    conn = sqlite3.connect(url)
 
     crsr = conn.cursor()
     crsr.execute('SELECT * FROM estudiantes where correo="{}"'.format(correo))
